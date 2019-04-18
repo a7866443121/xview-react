@@ -21,13 +21,12 @@ export default class DemoBlock extends Component {
           <div span="14">
             <div className="docs-demo docs-demo--expand">
               <div className="highlight-wrapper">
-                <slot name="highlight"></slot>
-                <Child template={Template}></Child>
+                {vm.props.children}
               </div>
             </div>
           </div>
         </div>
-        <span className="docs-trans docs-demo-triangle" onclick="toggle">{state.isExpand ? '隐藏代码' : '显示代码'}</span>
+        <span className="docs-trans docs-demo-triangle" onClick={this.toggle}>{state.isExpand ? '隐藏代码' : '显示代码'}</span>
       </div>
     );
   }

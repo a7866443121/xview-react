@@ -7,28 +7,24 @@ export default class Xbutton extends Component {
   }
   static propTypes = {
     type: PropTypes.string,
-    plain: PropTypes.boolean,
-    disabled: PropTypes.boolean,
-    round: PropTypes.boolean,
-    radius: PropTypes.boolean,
-    circle: PropTypes.boolean
+    plain: PropTypes.bool,
+    disabled: PropTypes.bool,
+    round: PropTypes.bool,
+    radius: PropTypes.bool,
+    circle: PropTypes.bool
   };
   static defaultProps = { type: '' };
   render() {
     var vm = this;
     const classes = [
-      type ? 'x-btn-' + vm.type : '',
-      {
-        'is-round': vm.round,
-        'is-radius': vm.radius,
-        'is-circle': vm.circle,
-        'is-disabled': vm.disabled
-      }
+        vm.props.type ? 'x-btn-' + vm.props.type : null,
+        vm.props.round ? 'is-round' : null,
+        vm.props.radius ? 'is-radius' : null,
+        vm.props.circle ? 'is-circle' : null,
+        vm.props.disabled ? 'is-disabled' : null
     ];
     return (
-      <button className="x-btn" className={classes}>
-        <slot>按钮</slot>
-      </button>
+      <button className={`x-btn ${classes.join(' ')}`}>{vm.props.children || '按钮'}</button>
     );
   }
 }
