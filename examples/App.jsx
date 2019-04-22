@@ -4,6 +4,8 @@ import router from './router/index';
 import './app.scss';
 import SideNav from './components/SideNav';
 import MainHeader from './components/Header';
+import Animated from './components/transition/transition';
+
 export default class App extends Component {
   constructor (props) {
     super(props);
@@ -31,11 +33,11 @@ export default class App extends Component {
           <div className="container">
             <SideNav className="nav" />
             <section className="view">
-                <Switch>
+              <Animated>
                   {router.map((v,i) => {
                     return <Route path={v.path} component= {v.component} key={i}/>
                   })}
-                </Switch>
+              </Animated>
             </section>
           </div>
         </React.Fragment>
